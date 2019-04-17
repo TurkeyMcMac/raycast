@@ -11,7 +11,6 @@ char cast_ray(const struct map *map,
 	pos = *posp;
 	dpos = *dposp;
 	while ((tile = cmget(map, pos.x, pos.y))) {
-		struct vec dpos_sign;
 		struct vec tonext = {INFINITY, INFINITY};
 		if (*tile != ' ') {
 			pos.x -= posp->x;
