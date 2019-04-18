@@ -1,4 +1,5 @@
 #include "map.h"
+#include <math.h>
 #include <stddef.h>
 
 char *mget(struct map *map, int x, int y)
@@ -11,4 +12,14 @@ const char *cmget(const struct map *map, int x, int y)
 {
 //	printf("(%d, %d)\n", x, y);
 	return mget((struct map *)map, x, y);
+}
+
+char *mpos(struct map *map, const struct vec *pos)
+{
+	return mget(map, floor(pos->x), floor(pos->y));
+}
+
+const char *cmpos(const struct map *map, const struct vec *pos)
+{
+	return mpos((struct map *)map, pos);
 }

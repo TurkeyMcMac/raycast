@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 		default:
 			continue;
 		}
-		here = cmget(&map, pos.x, pos.y);
+		here = cmpos(&map, &pos);
 		if (!here || *here != ' ') {
 			pos = oldpos;
 		}

@@ -10,7 +10,7 @@ char cast_ray(const struct map *map,
 	const char *tile;
 	pos = *posp;
 	dpos = *dposp;
-	while ((tile = cmget(map, pos.x, pos.y))) {
+	while ((tile = cmpos(map, &pos))) {
 		struct vec tonext = {INFINITY, INFINITY};
 		if (*tile != ' ') {
 			pos.x -= posp->x;
