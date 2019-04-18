@@ -7,7 +7,7 @@
 struct draw_info {
 	double fov;
 	int n_rays;
-	double vanish_dist;
+	double wall_half;
 	int height;
 };
 
