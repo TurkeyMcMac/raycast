@@ -1,6 +1,7 @@
 #include "draw_frame.h"
 #include "options.h"
 #include "read_map.h"
+#include <ctype.h>
 #include <curses.h>
 #include <errno.h>
 #include <stdlib.h>
@@ -29,7 +30,7 @@ int main(int argc, char *argv[])
 		const char *here;
 		draw_frame(&info, &map, &pos, &dpos);
 		refresh();
-		switch (getch()) {
+		switch (tolower(getch())) {
 		case 'w':
 			pos.x += dpos.x;
 			pos.y += dpos.y;
