@@ -11,12 +11,12 @@ void draw_frame(const struct draw_info *info,
 	for (int i = 0; i < info->n_rays; ++i) {
 		double len;
 		char wall;
-		int y, padding;
+		int y, padding, wall_height;
 		struct vec dpos = *dposp;
 		vec_rotate(&dpos, info->fov * ((double)i / info->n_rays - 0.5));
 		wall = cast_ray(map, pos, &dpos, &len);
-		if (len > info->vanish_dist) continue;
-		padding = len / info->vanish_dist * info->height / 2;
+		wall_height = info->vanish_dist / len * info->height / 4.0;
+		padding = (info->height - wall_height) / 2;
 		for (y = 0; y < padding; ++y) {
 			mvaddch(y, i, ' ');
 		}

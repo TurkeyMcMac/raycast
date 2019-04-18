@@ -27,7 +27,7 @@ Options:\n\
   -v                      Print version information and exit.\n\
 Controls: Use WASD to move forward and backward and to turn. Press q to quit.\n"
 	;
-	static const char version_fmt[] = "%s version 0.1.0\n";
+	static const char version_fmt[] = "%s version 0.2.0\n";
 	static const char optstring[] = 
 		"f:" // FOV
 		"W:" // screen width
