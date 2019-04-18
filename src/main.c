@@ -15,7 +15,7 @@ int main(void)
 	struct draw_info info = {
 		.fov = FOV,
 		.n_rays = N_RAYS,
-		.vanish_dist = 20.0,
+		.vanish_dist = 10.0,
 		.height = 40
 	};
 	FILE *mapfile;

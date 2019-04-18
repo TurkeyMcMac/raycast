@@ -16,7 +16,7 @@ void draw_frame(const struct draw_info *info,
 		vec_rotate(&dpos, info->fov * ((double)i / info->n_rays - 0.5));
 		wall = cast_ray(map, pos, &dpos, &len);
 		if (len > info->vanish_dist) continue;
-		padding = len / info->vanish_dist * info->height;
+		padding = len / info->vanish_dist * info->height / 2;
 		for (y = 0; y < padding; ++y) {
 			mvaddch(y, i, ' ');
 		}
