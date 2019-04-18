@@ -20,8 +20,8 @@ Options:\n\
   -w <wall-half>     Set the point where walls take up half the height of the\n\
                      screen. Defaults to 6.\n\
   -m <movement-rate> Set the forward/backward movement per tick. The default\n\
-                     is 0.05.\n\
-  -r <rotation-rate> Set the turn amount in degrees per tick. Default is .02.\n\
+                     is 0.2.\n\
+  -r <rotation-rate> Set the turn amount in degrees per tick. Default is 4.5.\n\
   -M <map-file-path> Set the map to load and explore. This is required.\n\
   -h                 Print this help information and exit.\n\
   -v                 Print version information and exit.\n\
@@ -51,8 +51,8 @@ Controls: Use WASD to move forward and backward and to turn. Press q to quit.\n"
 		draw->height = 0;
 	}
 	draw->wall_half = 6.0;
-	*trans = 0.05;
-	*turn = 0.02;
+	*trans = 0.2;
+	*turn = 4.5 / 180.0 * M_PI;
 	*map = NULL;
 	while ((o = getopt(argc, argv, optstring)) != -1) {
 		switch (o) {
