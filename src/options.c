@@ -41,8 +41,15 @@ Controls: Use WASD to move forward and backward and to turn. Press q to quit.\n"
 	;
 	int o;
 	draw->fov = M_PI / 2.0;
-	draw->n_rays = COLS;
-	draw->height = LINES;
+	if (isatty(STDOUT_FILENO)) {
+		initscr();
+		draw->n_rays = COLS;
+		draw->height = LINES;
+		endwin();
+	} else {
+		draw->n_rays = 0;
+		draw->height = 0;
+	}
 	draw->vanish_dist = 9.0;
 	*trans = 0.05;
 	*turn = 0.02;
@@ -71,21 +78,17 @@ Controls: Use WASD to move forward and backward and to turn. Press q to quit.\n"
 			*map = optarg;
 			break;
 		case 'h':
-			endwin();
 			printf(help_fmt, argv[0]);
 			exit(0);
 		case 'v':
-			endwin();
 			printf(version_fmt, argv[0]);
 			exit(0);
 		default:
-			endwin();
 			fprintf(stderr, help_fmt, argv[0]);
 			exit(EXIT_FAILURE);
 		}
 	}
 	if (!*map) {
-		endwin();
 		fprintf(stderr, "%s: No map file specified\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}

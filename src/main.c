@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
 	struct vec pos, dpos;
 	struct map map;
 	const char *err;
-	initscr();
 	options(&info, &trans, &turn, &map_path, argc, argv);
 	if (!(mapfile = fopen(map_path, "r"))) {
 		err = strerror(errno);
@@ -24,6 +23,7 @@ int main(int argc, char *argv[])
 	if ((err = read_map(&map, &pos, mapfile))) goto error;
 	dpos.x = trans;
 	dpos.y = 0.0;
+	initscr();
 	for (;;) {
 		struct vec oldpos = pos;
 		const char *here;
@@ -59,7 +59,6 @@ end:
 	exit(0);
 
 error:
-	endwin();
 	fprintf(stderr, "Error: %s\n", err);
 	exit(EXIT_FAILURE);
 }
