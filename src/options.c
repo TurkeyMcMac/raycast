@@ -18,7 +18,7 @@ Options:\n\
   -H <height>        Set the screen height in characters. Defaults to the\n\
                      height of the terminal.\n\
   -w <wall-half>     Set the point where walls take up half the height of the\n\
-                     screen. Defaults to 9.\n\
+                     screen. Defaults to 6.\n\
   -m <movement-rate> Set the forward/backward movement per tick. The default\n\
                      is 0.05.\n\
   -r <rotation-rate> Set the turn amount in degrees per tick. Default is .02.\n\
@@ -50,7 +50,7 @@ Controls: Use WASD to move forward and backward and to turn. Press q to quit.\n"
 		draw->n_rays = 0;
 		draw->height = 0;
 	}
-	draw->wall_half = 9.0;
+	draw->wall_half = 6.0;
 	*trans = 0.05;
 	*turn = 0.02;
 	*map = NULL;
