@@ -1,0 +1,21 @@
+ ____      _ __   ______    _    ____ _____ 
+|  _ \    / \\ \ / / ___|  / \  / ___|_   _|
+| |_) |  / _ \\ V / |     / _ \ \___ \ | |  
+|  _ <  / ___ \| || |___ / ___ \ ___) || |  
+|_| \_\/_/   \_\_| \____/_/   \_\____/ |_|  
+
+============================================
+
+This is a simple ray caster. It keeps a 2D map and the position of the camera,
+along with its direction. For each frame it sends out "rays" evenly spaced
+across the field of view. Each ray goes in a straight line until it hits a wall.
+That section of wall is then displayed with a height based on how far the ray
+travelled.
+
+Currently, to run a demo, run these commands:
+
+  make # If the binary has not been created yet
+  ./raycast # Run the demo
+
+This will load the map from the file 'example'. Look in there to see the file
+format.
