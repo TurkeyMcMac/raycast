@@ -1,4 +1,4 @@
-#include "cast_ray.h"
+#include "draw_frame.h"
 #include "read_map.h"
 #include <curses.h>
 #include <errno.h>
@@ -9,37 +9,6 @@
 #define N_RAYS 120
 #define MOVEMENT 0.05
 #define ROTATION 0.02
-
-struct draw_info {
-	double fov;
-	int n_rays;
-	double vanish_dist;
-	int height;
-};
-
-void draw_frame(const struct draw_info *info,
-	const struct map *map,
-	const struct vec *pos,
-	const struct vec *dposp)
-{
-	clear();
-	for (int i = 0; i < info->n_rays; ++i) {
-		double len;
-		char wall;
-		int y, padding;
-		struct vec dpos = *dposp;
-		vec_rotate(&dpos, info->fov * ((double)i / info->n_rays - 0.5));
-		wall = cast_ray(map, pos, &dpos, &len);
-		if (len > info->vanish_dist) continue;
-		padding = len / info->vanish_dist * info->height;
-		for (y = 0; y < padding; ++y) {
-			mvaddch(y, i, ' ');
-		}
-		for (; y < info->height - padding; ++y) {
-			mvaddch(y, i, wall);
-		}
-	}
-}
 
 int main(void)
 {
